@@ -1,0 +1,6 @@
+Ce fichier contient les basiques pour une utilisation en local des icônes de Fontawesome.
+
+Pour plus d'information sur leur fonctionnement, voir : 
+	https://fontawesome.com/ 
+et, plus particulièrement :
+	https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself
