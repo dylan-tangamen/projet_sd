@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,12 +29,11 @@ public class Jeux {
 	 * 		- Statement : permet d'écrire les requêtes sql
 	 * 		- ResultSet : sauvegarde les résultats pour les transmettre à la jsp
 	 */
-	
-	private static String driverClass = "com.mysql.cj.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/projetsddb?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
-	// Pourquoi ?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC ? ça sort de nulle part, mais ça règle mon soucis de SQLException
-	private static String user = "root";
-	private static String secret = "root";
+	private static ResourceBundle propertiesSgbd=ResourceBundle.getBundle("fr.polytech.properties.config");
+	private static String driverClass = propertiesSgbd.getString("sgbd.driver");
+	private static String url = propertiesSgbd.getString("sgbd.url");
+	private static String user = propertiesSgbd.getString("sgbd.user");
+	private static String secret = propertiesSgbd.getString("sgbd.secret");
 	
 	private static Connection connection;
 
