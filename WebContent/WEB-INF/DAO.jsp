@@ -33,7 +33,18 @@
 	<input type="text" id="addTitre" name="addTitre"/>
 	<label for="genre"> Genre : </label>
 	<input type="text" id="addGenre" name="addGenre"/>
-	<input type="submit"/>  
+	<input type="submit" name="add" value="Ajouter"/>  
+</form>
+
+<h2>Suppression de jeu</h2>
+<form method="post" action="dao">
+	<label for="titre"> Titre de jeu à retirer :</label>
+	<select id="rmTitre" name="rmTitre">
+	<c:forEach items="${listeJeux}" var="jeu">					
+		<option value="${jeu.titre}">${jeu.titre}</option>
+	</c:forEach>
+	</select>
+	<input type="submit" name="remove" value="Retirer"/>
 </form>
 
 </body>

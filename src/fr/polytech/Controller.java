@@ -41,9 +41,14 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		Jeux jeuxPost=new Jeux();
-		jeuxPost.ajouterJeu(request);
+		// Solution peu élégante, mais qui fonctionne.
+		if (request.getParameter("add")!=null) {
+			jeuxPost.ajouterJeu(request);
+		} else if (request.getParameter("remove")!=null) {
+			jeuxPost.retirerJeu(request);
+		}
+
 		
 		doGet(request, response);
 	}

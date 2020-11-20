@@ -54,7 +54,6 @@ public class Jeux {
 		}
 	}
 	
-	
 	//Modifier un jeu
 	//Supprimer un jeu
 	//Renvoyer une liste de jeux à partir d'une recherche textuelle (paginer les résultats avec bootstrap?)
@@ -129,6 +128,26 @@ public class Jeux {
 		}
 	}
 
-
+	public void retirerJeu(HttpServletRequest request) {
+		String requeteSQL="DELETE FROM `jeux` WHERE titre='"+request.getParameter("rmTitre")+"';";
+		
+		seConnecter();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.createStatement();
+			statement.executeUpdate(requeteSQL);
+		} catch (Exception e) {
+			System.out.println("Problème de connexion à db_daoperso. "+e+requeteSQL);
+		} finally {
+			try{
+				if (connection!=null) {connection.close();}
+				if (statement!=null) {statement.close();}
+				if (resultSet!=null) {resultSet.close();}
+			} catch (Exception e) {System.out.println("Problème de fin de connexion.");}
+		}
+		
+	}
 
 }
