@@ -30,7 +30,7 @@ public class Jeux {
 	 */
 	
 	private static String driverClass = "com.mysql.cj.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/db_sd?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+	private static String url = "jdbc:mysql://localhost:3306/projetsddb?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 	// Pourquoi ?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC ? ça sort de nulle part, mais ça règle mon soucis de SQLException
 	private static String user = "root";
 	private static String secret = "root";
