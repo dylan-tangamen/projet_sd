@@ -16,13 +16,18 @@
 </p>
 
 <h2>Liste de jeux :</h2>
-<ul>
+<table>
 	<c:forEach items="${listeJeux}" var="jeu">
-		<li>
-		<c:out value="${jeu.titre}"></c:out>
-		</li>
+		<tr>
+			<td>
+			<c:out value="${jeu.titre}"></c:out>
+			</td>
+			<td>
+			<c:out value="${jeu.genre}"></c:out>
+			</td>
+		</tr>
 	</c:forEach>
-</ul>	
+</table>	
 
 <h2>Ajout de jeu</h2>
 <p>Attention, l'apostrophe, les guillemets et les parenthèses ne sont pas supportées par notre système. Veuillez vous abstenir d'entrer un titre ou un genre en contenant.<br>Ne vous inquiétez pas, ce problème sera bientôt résolu. Nous travaillons dur pour vous permettre d'ajouter vos jeux favoris à nos services.</p>
