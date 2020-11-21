@@ -16,6 +16,7 @@
 </p>
 
 <h2>Liste de jeux :</h2>
+<!-- 
 <table>
 	<c:forEach items="${listeJeux}" var="jeu">
 		<tr>
@@ -27,7 +28,45 @@
 			</td>
 		</tr>
 	</c:forEach>
-</table>	
+</table>
+ -->
+<h2>Recherche</h2>
+<form method="get" action="dao">
+	<label>Recherche : </label>
+	<input type="text" id="search" name="search"/>
+	<input type="submit" value="Rechercher"/>
+</form>
+<c:choose>
+<c:when test="${searched==null}">
+<table>
+	<c:out value="${search}"></c:out>
+	<c:forEach items="${listeJeux}" var="jeu">
+	<tr>
+		<td>
+		<c:out value="${jeu.titre}"></c:out>
+		</td>
+		<td>
+		<c:out value="${jeu.genre}"></c:out>
+		</td>
+	</tr>
+	</c:forEach>
+</table>
+</c:when>
+<c:otherwise>
+<table>
+	<c:forEach items="${searched}" var="jeu">
+	<tr>
+		<td>
+		<c:out value="${jeu.titre}"></c:out>
+		</td>
+		<td>
+		<c:out value="${jeu.genre}"></c:out>
+		</td>
+	</tr>
+	</c:forEach>
+</table>
+</c:otherwise>
+</c:choose>
 
 <h2>Ajout de jeu</h2>
 <p>Attention, l'apostrophe, les guillemets et les parenthèses ne sont pas supportées par notre système. Veuillez vous abstenir d'entrer un titre ou un genre en contenant.<br>Ne vous inquiétez pas, ce problème sera bientôt résolu. Nous travaillons dur pour vous permettre d'ajouter vos jeux favoris à nos services.</p>
