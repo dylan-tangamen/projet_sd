@@ -47,6 +47,8 @@ public class Controller extends HttpServlet {
 			jeuxPost.ajouterJeu(request);
 		} else if (request.getParameter("remove")!=null) {
 			jeuxPost.retirerJeu(request);
+		} else if (request.getParameter("update")!=null) {
+			jeuxPost.modifierJeu(request);
 		}
 
 		

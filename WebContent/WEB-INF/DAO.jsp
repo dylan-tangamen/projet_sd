@@ -47,5 +47,26 @@
 	<input type="submit" name="remove" value="Retirer"/>
 </form>
 
+<h2>Modification de jeu</h2>
+<form method="post" action="dao">
+	<label for="titre">Titre du jeu à modifier :</label>
+	<select id="updTitre" name="updTitre">
+	<c:forEach items="${listeJeux}" var="jeu">
+		<option value="${jeu.titre}">${jeu.titre}</option>
+	</c:forEach>
+	</select>
+	<label for="champs"> Champs à modifier :</label>
+	<select id="updChamps" name="updChamps">
+		<option value="Titre">Titre</option>
+		<option value="Genre">Genre</option>
+	</select>
+	<label for="nouvelle valeur"> Nouvelle valeur :</label>
+	<input type="text" id="updValeur" name="updValeur"/>
+	<input type="submit" name="update" value="Modifier le champs"/>
+</form>
+	
+	
+	
+
 </body>
 </html>
