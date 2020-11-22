@@ -30,14 +30,15 @@
 	</c:forEach>
 </table>
  -->
-<h2>Recherche</h2>
-<form method="get" action="dao">
-	<label>Recherche : </label>
-	<input type="text" id="search" name="search"/>
-	<input type="submit" value="Rechercher"/>
-</form>
+<p>
+	<form method="get" action="dao">
+		<label>Recherche : </label>
+		<input type="text" id="search" name="search"/>
+		<input type="submit" value="Rechercher"/>
+	</form>
+</p>
 <c:choose>
-<c:when test="${searched==null}">
+<c:when test="${searched[0]==null}">
 <table>
 	<c:out value="${search}"></c:out>
 	<c:forEach items="${listeJeux}" var="jeu">
