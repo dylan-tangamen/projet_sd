@@ -110,8 +110,9 @@ public class Jeux {
 		try {
 			statement = connection.createStatement();
 		// Exécuter une requête
-			resultSet = statement.executeQuery("SELECT * FROM `jeux` WHERE `titre` LIKE '%"+condition+"%' OR `genre` LIKE '%"+condition+"%';");
-			System.out.println("SELECT * FROM `jeux` WHERE `titre` OR `genre` LIKE '%"+condition+"%';");
+			String requeteSQL="SELECT * FROM `jeux` WHERE `titre` LIKE '%"+condition+"%' OR `genre` LIKE '%"+condition+"%';";
+			resultSet = statement.executeQuery(requeteSQL);
+			System.out.println(requeteSQL);
 		// Récupération des données
 			while(resultSet.next()) {
 				int id = resultSet.getInt("idJ");
