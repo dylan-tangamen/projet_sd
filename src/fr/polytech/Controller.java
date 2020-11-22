@@ -32,7 +32,8 @@ public class Controller extends HttpServlet {
 
 		Jeux jeux2=new Jeux();
 		request.setAttribute("listeJeux", jeux2.listerTousLesJeux());
-		
+		request.setAttribute("searched", jeux2.listerLike(request));	
+		//Faille ? Mais je ne veux pas le mettre en post, sinon je ne pourrais pas avoir la liste de recherchés en même temps que d'éxecuter mes autres forms
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/DAO.jsp").forward(request, response);
 	}
@@ -50,9 +51,13 @@ public class Controller extends HttpServlet {
 		} else if (request.getParameter("update")!=null) {
 			jeuxPost.modifierJeu(request);
 		}
+		doGet(request, response);
+	} 
+
 
 		
-		doGet(request, response);
-	}
-
+		
 }
+
+
+

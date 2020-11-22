@@ -59,6 +59,7 @@ public class Jeux {
 	//Renvoyer une liste de jeux à partir d'une recherche textuelle (paginer les résultats avec bootstrap?)
 	//Envoyer le tout sur git dans une branche "test1"
 
+
 	public List<Jeu> listerTousLesJeux(){
 		List<Jeu> resultat = new ArrayList<Jeu>();
 
@@ -72,6 +73,45 @@ public class Jeux {
 			statement = connection.createStatement();
 		// Exécuter une requête
 			resultSet = statement.executeQuery("SELECT * FROM `jeux`");
+		// Récupération des données
+			while(resultSet.next()) {
+				int id = resultSet.getInt("idJ");
+				String titre = resultSet.getString("titre");
+				String genre = resultSet.getString("genre");
+				resultat.add(new Jeu(id, titre, genre));
+			}
+		} catch (SQLException e) {
+			System.out.println("Problème de connexion à db_daoperso. "+e);
+		} finally {
+		//Clore la connexion
+			try{
+				if (connection!=null) {connection.close();}
+				if (statement!=null) {statement.close();}
+				if (resultSet!=null) {resultSet.close();}
+			} catch (Exception e) {System.out.println("Problème de fin de connexion.");}
+		}
+		//Envoie des données extraites
+		return resultat;
+	}
+	
+	
+	public List<Jeu> listerLike(HttpServletRequest request) {
+		return listerLike(request.getParameter("search"));
+	}
+	public List<Jeu> listerLike(String condition){
+		List<Jeu> resultat = new ArrayList<Jeu>();
+
+		seConnecter();
+		
+		// Initialisation
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.createStatement();
+		// Exécuter une requête
+			resultSet = statement.executeQuery("SELECT * FROM `jeux` WHERE `titre` OR `genre` LIKE '%"+condition+"%';");
+			System.out.println("SELECT * FROM `jeux` WHERE `titre` OR `genre` LIKE '%"+condition+"%';");
 		// Récupération des données
 			while(resultSet.next()) {
 				int id = resultSet.getInt("idJ");
@@ -175,5 +215,7 @@ public class Jeux {
 		
 	
 	
+
+
 
 }
