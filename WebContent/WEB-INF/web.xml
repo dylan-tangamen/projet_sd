@@ -17,7 +17,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Inscription</servlet-name>
-		<url-pattern>/Inscription</url-pattern>
+		<url-pattern>/inscription</url-pattern>
 	</servlet-mapping>
 
 	
