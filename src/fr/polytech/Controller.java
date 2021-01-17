@@ -51,7 +51,8 @@ public class Controller extends HttpServlet {
 		} else if (request.getParameter("update")!=null) {
 			jeuxPost.modifierJeu(request);
 		}
-		doGet(request, response);
+		response.sendRedirect("/projet_sd/dao");
+		//doGet(request, response);
 	} 
 
 

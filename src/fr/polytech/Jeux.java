@@ -59,7 +59,7 @@ public class Jeux {
 	//Renvoyer une liste de jeux à partir d'une recherche textuelle (paginer les résultats avec bootstrap?)
 	//Envoyer le tout sur git dans une branche "test1"
 
-
+	// Liste tous les jeux
 	public List<Jeu> listerTousLesJeux(){
 		List<Jeu> resultat = new ArrayList<Jeu>();
 
@@ -94,7 +94,7 @@ public class Jeux {
 		return resultat;
 	}
 	
-	
+	// Liste les jeux dont le titre ou le genre correspondent au moins partiellement à la recherche
 	public List<Jeu> listerLike(HttpServletRequest request) {
 		return listerLike(request.getParameter("search"));
 	}
@@ -134,6 +134,8 @@ public class Jeux {
 		return resultat;
 	}
 
+	
+	// Ajoute un jeu à la base de donnée.
 	public void ajouterJeu(Jeu jeu) {
 		ajouterJeu(jeu.getId(),jeu.getTitre(),jeu.getGenre());
 	}
@@ -169,6 +171,7 @@ public class Jeux {
 		}
 	}
 
+	// Efface un jeu de la base de donnée.
 	public void retirerJeu(HttpServletRequest request) {
 		String requeteSQL="DELETE FROM `jeux` WHERE titre='"+request.getParameter("rmTitre")+"';";
 		
@@ -191,20 +194,24 @@ public class Jeux {
 		
 	}
 	
+	// Modifie un jeu de la base de donnée
 	public void modifierJeu(HttpServletRequest request) {
 		String requeteSQL="UPDATE `jeux` SET `"+request.getParameter("updChamps")
 		+"`='"+request.getParameter("updValeur")+"'WHERE `titre`='"+request.getParameter("updTitre")+"';"; 
 		
+		// Ouverture connexion
 		seConnecter();
 		Statement statement =null;
 		ResultSet resultSet=null;
-		
+		// Traitement requête
 		try {
 			statement = connection.createStatement();
 			statement.executeUpdate(requeteSQL);
 		} catch (Exception e) {
 			System.out.println("Problème de connexion à db_daoperso. "+e+requeteSQL);
-		} finally {
+		} 
+		// Fermeture de la connexion
+		finally { 
 			try{
 				if (connection!=null) {connection.close();}
 				if (statement!=null) {statement.close();}

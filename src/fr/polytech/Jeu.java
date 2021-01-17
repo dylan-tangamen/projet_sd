@@ -36,6 +36,4 @@ public class Jeu {
 		this.genre = genre;
 	}
 	
-	
-	
 }
