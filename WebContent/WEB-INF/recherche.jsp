@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="MainNavbar.jsp"/>
+
 <h1>Recherche</h1>
 <p>
 	<c:out value="La bibliothèque JSTL est fonctionnelle."/>
