@@ -16,7 +16,7 @@
 </p>
 
 <h2>Liste de jeux :</h2>
-<!-- 
+
 <table>
 	<c:forEach items="${listeJeux}" var="jeu">
 		<tr>
@@ -29,7 +29,7 @@
 		</tr>
 	</c:forEach>
 </table>
- -->
+ 
 <h2>Recherche</h2>
 <form method="get" action="dao">
 	<label>Recherche : </label>
