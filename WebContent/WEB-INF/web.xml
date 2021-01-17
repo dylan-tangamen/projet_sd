@@ -9,6 +9,17 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+	<servlet>
+		<servlet-name>Inscription</servlet-name>
+		<servlet-class>fr.polytech.connexion.Inscription</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Inscription</servlet-name>
+		<url-pattern>/Inscription</url-pattern>
+	</servlet-mapping>
+
 	
   <servlet>
     <servlet-name>a</servlet-name>
