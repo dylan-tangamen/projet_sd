@@ -16,6 +16,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>a</servlet-name>
-    <url-pattern>/dao</url-pattern>
+    <url-pattern>/recherche</url-pattern>
   </servlet-mapping>
 </web-app>
