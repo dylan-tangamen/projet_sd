@@ -9,12 +9,16 @@
     </head>
     <body>
         <form method="post" action="inscription">
-            <fieldset>
+	    <fieldset>
                 <legend>Inscription</legend>
                 <p>Vous pouvez vous inscrire via ce formulaire.</p>
 
                 <label for="email">Adresse email <span class="requis">*</span></label>
+<<<<<<< HEAD
                 <input type="email" id="email" name="email" value="<c:out value="${param.email}"/>" size="20" maxlength="60" />
+=======
+                <input type="email" id="email" name="email" value="" size="20" maxlength="60" />
+>>>>>>> 5ecd2a7b2f10684f4cfb2089148b006b36d37669
                 <span class="erreur">${erreurs['email']}</span>
                 <br />
 
@@ -29,7 +33,11 @@
                 <br />
 
                 <label for="nom">Nom d'utilisateur</label>
+<<<<<<< HEAD
                 <input type="text" id="nom" name="nom" value="<c:out value="${param.nom}"/>" size="20" maxlength="20" />
+=======
+                <input type="text" id="nom" name="nom" value="" size="20" maxlength="20" />
+>>>>>>> 5ecd2a7b2f10684f4cfb2089148b006b36d37669
                 <span class="erreur">${erreurs['nom']}</span>
                 <br />
 
