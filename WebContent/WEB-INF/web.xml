@@ -13,12 +13,14 @@
   
 	<servlet>
 		<servlet-name>Inscription</servlet-name>
-		<servlet-class>fr.polytech.connexion.Inscription</servlet-class>
+		<servlet-class>inscription.servlet.Inscription</servlet-class>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>Inscription</servlet-name>
 		<url-pattern>/inscription</url-pattern>
 	</servlet-mapping>
+
 
 	
   <servlet>
@@ -30,3 +32,4 @@
     <url-pattern>/recherche</url-pattern>
   </servlet-mapping>
 </web-app>
+
