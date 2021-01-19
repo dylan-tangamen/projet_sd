@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import inscription.beans.Utilisateur;
 
-public final class InscriptionForm {
-	
+public class InscriptionForm {
+
 	private static final String CHAMP_EMAIL  = "email";
     private static final String CHAMP_PASS   = "motdepasse";
     private static final String CHAMP_CONF   = "confirmation";
@@ -92,10 +92,17 @@ public final class InscriptionForm {
         }
     }
 
+    /*
+     * Ajoute un message correspondant au champ spécifié à la map des erreurs.
+     */
     private void setErreur( String champ, String message ) {
         erreurs.put( champ, message );
     }
 
+    /*
+     * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
+     * sinon.
+     */
     private static String getValeurChamp( HttpServletRequest request, String nomChamp ) {
         String valeur = request.getParameter( nomChamp );
         if ( valeur == null || valeur.trim().length() == 0 ) {

@@ -10,8 +10,8 @@
     <body>
         <form method="post" action="inscription">
             <fieldset>
-                <legend>REJOIGNEZ NOUS ! </legend>
-                <p>Remplissez ce formulaire afin de vous inscrire et profiter de nos services !</p>
+                <legend>REJOIGNEZ-NOUS ! </legend>
+                <p>Remplissez ce formulaire afin de profiter de nos services ! </p>
 
                 <label for="email">Adresse email <span class="requis">*</span></label>
                 <input type="email" id="email" name="email" value="<c:out value="${utilisateur.email}"/>" size="20" maxlength="60" />
