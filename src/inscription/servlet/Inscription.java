@@ -16,7 +16,7 @@ import inscription.forms.InscriptionForm;
 public class Inscription extends HttpServlet {
     public static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
-    public static final String VUE = "/WEB-INF/inscription.jsp";
+    public static final String VUE = "/WEB-INF/Inscription.jsp";
 		
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         /* Affichage de la page d'inscription */
@@ -24,10 +24,10 @@ public class Inscription extends HttpServlet {
     }
 	
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-        /* Préparation de l'objet formulaire */
+        /* Prï¿½paration de l'objet formulaire */
         InscriptionForm form = new InscriptionForm();
 		
-        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        /* Appel au traitement et ï¿½ la validation de la requï¿½te, et rï¿½cupï¿½ration du bean en rï¿½sultant */
         Utilisateur utilisateur = form.inscrireUtilisateur( request );
 		
         /* Stockage du formulaire et du bean dans l'objet request */
