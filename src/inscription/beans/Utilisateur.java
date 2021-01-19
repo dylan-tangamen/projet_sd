@@ -2,7 +2,7 @@ package inscription.beans;
 
 public class Utilisateur {
 
-	 private String email;
+	 	private String email;
 	    private String motDePasse;
 	    private String nom;
 

@@ -10,17 +10,29 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <session-config> 
+		<session-timeout>1</session-timeout>
+	</session-config>
   
 	<servlet>
 		<servlet-name>Inscription</servlet-name>
 		<servlet-class>inscription.servlet.Inscription</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>Inscription</servlet-name>
 		<url-pattern>/inscription</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Connexion</servlet-name>
+		<servlet-class>inscription.servlet.Connexion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Connexion</servlet-name>
+		<url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
 
+	
 
 	
   <servlet>
