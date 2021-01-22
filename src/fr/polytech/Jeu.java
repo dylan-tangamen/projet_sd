@@ -6,7 +6,7 @@ public class Jeu {
 	private int idJ;
 	private String titre;
 	private String image;
-	private String dateSortie;
+	private String dateSortie;  //Essayer d'ajuster le code avec type Date
 	private String studio;
 	private String description; //Type String peut-être léger	
 	
