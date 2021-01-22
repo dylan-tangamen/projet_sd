@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <session-config> 
+ 	<session-config> 
 		<session-timeout>1</session-timeout>
 	</session-config>
   
@@ -30,6 +30,15 @@
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
 		<url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Deconnexion</servlet-name>
+		<servlet-class>inscription.servlet.Deconnexion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Deconnexion</servlet-name>
+		<url-pattern>/deconnexion</url-pattern>
 	</servlet-mapping>
 
 	

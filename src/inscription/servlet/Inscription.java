@@ -18,7 +18,7 @@ public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
-    public static final String VUE = "/WEB-INF/Inscription.jsp";
+    public static final String VUE = "/WEB-INF/inscription.jsp";
 		
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
