@@ -18,15 +18,19 @@ public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
-    public static final String VUE = "/WEB-INF/inscription.jsp";
+    public static final String VUE = "/WEB-INF/Inscription.jsp";
 		
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 	
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+
+        /* Pr�paration de l'objet formulaire */
         InscriptionForm form = new InscriptionForm();
 		
+        /* Appel au traitement et � la validation de la requ�te, et r�cup�ration du bean en r�sultant */
+
         Utilisateur utilisateur = form.inscrireUtilisateur( request );
 		
         request.setAttribute( ATT_FORM, form );
