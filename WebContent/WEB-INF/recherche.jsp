@@ -27,7 +27,7 @@
 			<c:out value="${jeu.titre}"></c:out>
 			</td>
 			<td>
-			<c:out value="${jeu.genre}"></c:out>
+			<c:out value="${jeu.dateSortie}"></c:out>
 			</td>
 		</tr>
 	</c:forEach>
@@ -50,9 +50,6 @@
 		<td>
 		<c:out value="${jeu.titre}"></c:out>
 		</td>
-		<td>
-		<c:out value="${jeu.genre}"></c:out>
-		</td>
 	</tr>
 	</c:forEach>
 </table>
@@ -65,7 +62,7 @@
 		<c:out value="${jeu.titre}"></c:out>
 		</td>
 		<td>
-		<c:out value="${jeu.genre}"></c:out>
+		<c:out value="${jeu.studio}"></c:out>
 		</td>
 	</tr>
 	</c:forEach>
@@ -74,14 +71,20 @@
 </c:choose>
 
 <h2>Ajout de jeu</h2>
-<p>Attention, l'apostrophe, les guillemets et les parenthèses ne sont pas supportées par notre système. Veuillez vous abstenir d'entrer un titre ou un genre en contenant.<br>Ne vous inquiétez pas, ce problème sera bientôt résolu. Nous travaillons dur pour vous permettre d'ajouter vos jeux favoris à nos services.</p>
+<p>Attention, l'apostrophe, les guillemets et les parenthèses ne sont pas supportées par notre système. Veuillez vous abstenir d'entrer un titre en contenant.<br>Ne vous inquiétez pas, ce problème sera bientôt résolu. Nous travaillons dur pour vous permettre d'ajouter vos jeux favoris à nos services.</p>
 <form  method="post" action="">
-	<label for="id"> Id : </label>
+	<label for="id"> IdJ : </label>
 	<input type="number" id="addId" name="addId"/>
 	<label for="titre"> Titre : </label>
 	<input type="text" id="addTitre" name="addTitre"/>
-	<label for="genre"> Genre : </label>
-	<input type="text" id="addGenre" name="addGenre"/>
+	<label for="image"> Image : </label>
+	<input type="text" id="addImage" name="addImage"/>
+	<label for="dateSortie"> Date de sortie : </label>
+	<input type="text" id="addDateSortie" name="addDateSortie"/>
+	<label for="studio"> Studio : </label>
+	<input type="text" id="addStudio" name="addStudio"/>
+	<label for="description"> Description : </label>
+	<input type="text" id="addDescription" name="addDescription"/>
 	<input type="submit" name="add" value="Ajouter"/>  
 </form>
 
@@ -107,7 +110,10 @@
 	<label for="champs"> Champs à modifier :</label>
 	<select id="updChamps" name="updChamps">
 		<option value="Titre">Titre</option>
-		<option value="Genre">Genre</option>
+		<option value="Image">Image</option>
+		<option value="DateSortie">DateSortie</option>
+		<option value="Studio">Studio</option>
+		<option value="Description">Description</option>
 	</select>
 	<label for="nouvelle valeur"> Nouvelle valeur :</label>
 	<input type="text" id="updValeur" name="updValeur"/>
