@@ -8,7 +8,7 @@
         <link type="text/css" rel="stylesheet" href="form.css" />
     </head>
     <body>
-        <form method="post" action="connexion">
+        <form method="post" action="<c:url value="/connexion" />">
             <fieldset>
                 <legend>Connexion</legend>
                 <p>Connectez-vous ici ! </p>
