@@ -1,4 +1,4 @@
-package inscription.servlet;
+package servlets;
 
 import java.io.IOException;
 
@@ -13,11 +13,10 @@ public class Deconnexion extends HttpServlet {
 	public static final String URL_REDIRECTION = "http://localhost:8080/projet_sd/connexion";
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* Récupération et destruction de la session en cours */
+        
         HttpSession session = request.getSession();
         session.invalidate();
 
-        /* Redirection vers le Site du Zéro ! */
         response.sendRedirect( URL_REDIRECTION );
     }
 }

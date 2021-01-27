@@ -1,15 +1,15 @@
-package inscription.forms;
+package forms;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import inscription.beans.Utilisateur;
+import beans.Utilisateur;
 
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";
-    private static final String CHAMP_PASS   = "motdepasse";
+    private static final String CHAMP_PASS   = "mdp";
 
     private String              resultat;
     private Map<String, String> erreurs      = new HashMap<String, String>();
@@ -25,7 +25,7 @@ public final class ConnexionForm {
     public Utilisateur connecterUtilisateur( HttpServletRequest request ) {
         
         String email = getValeurChamp( request, CHAMP_EMAIL );
-        String motDePasse = getValeurChamp( request, CHAMP_PASS );
+        String mdp = getValeurChamp( request, CHAMP_PASS );
 
         Utilisateur utilisateur = new Utilisateur();
 
@@ -37,11 +37,11 @@ public final class ConnexionForm {
         utilisateur.setEmail( email );
 
         try {
-            validationMotDePasse( motDePasse );
+            validationMdp( mdp );
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
         }
-        utilisateur.setMotDePasse( motDePasse );
+        utilisateur.setMdp( mdp );
 
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de la connexion.";
@@ -58,9 +58,9 @@ public final class ConnexionForm {
         }
     }
 
-    private void validationMotDePasse( String motDePasse ) throws Exception {
-        if ( motDePasse != null ) {
-            if ( motDePasse.length() < 3 ) {
+    private void validationMdp( String mdp ) throws Exception {
+        if ( mdp != null ) {
+            if ( mdp.length() < 3 ) {
                 throw new Exception( "Le mot de passe doit contenir au moins 3 caractères." );
             }
         } else {

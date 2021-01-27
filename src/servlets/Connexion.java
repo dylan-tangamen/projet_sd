@@ -1,4 +1,4 @@
-package inscription.servlet;
+package servlets;
 
 
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import inscription.beans.Utilisateur;
-import inscription.forms.ConnexionForm;
+import beans.Utilisateur;
+import forms.ConnexionForm;
 
 public class Connexion extends HttpServlet {
 	

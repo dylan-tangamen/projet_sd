@@ -1,4 +1,4 @@
-package fr.polytech;
+package jeux;
 
 
 

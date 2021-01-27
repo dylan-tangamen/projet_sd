@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.polytech;
+package jeux;
 
 import java.io.IOException;
 
