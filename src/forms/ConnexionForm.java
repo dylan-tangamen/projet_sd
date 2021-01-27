@@ -9,7 +9,7 @@ import beans.Utilisateur;
 
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";
-    private static final String CHAMP_PASS   = "mdp";
+    private static final String CHAMP_PASS   = "motdepasse";
 
     private String              resultat;
     private Map<String, String> erreurs      = new HashMap<String, String>();
@@ -31,22 +31,26 @@ public final class ConnexionForm {
 
         try {
             validationEmail( email );
+            System.out.println("email set");
         } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
+            System.out.println("email erreur ");
         }
         utilisateur.setEmail( email );
 
         try {
             validationMdp( mdp );
+            System.out.println("mdp correct");
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
+            System.out.println("mdp erreur "+e);
         }
         utilisateur.setMdp( mdp );
 
         if ( erreurs.isEmpty() ) {
-            resultat = "Succès de la connexion.";
+            resultat = "Succï¿½s de la connexion.";
         } else {
-            resultat = "Échec de la connexion.";
+            resultat = "ï¿½chec de la connexion.";
         }
 
         return utilisateur;
@@ -61,7 +65,7 @@ public final class ConnexionForm {
     private void validationMdp( String mdp ) throws Exception {
         if ( mdp != null ) {
             if ( mdp.length() < 3 ) {
-                throw new Exception( "Le mot de passe doit contenir au moins 3 caractères." );
+                throw new Exception( "Le mot de passe doit contenir au moins 3 caractï¿½res." );
             }
         } else {
             throw new Exception( "Merci de saisir votre mot de passe." );

@@ -26,7 +26,7 @@ public class Connexion extends HttpServlet {
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         ConnexionForm form = new ConnexionForm();
-
+        System.out.println("Try connect");
         Utilisateur utilisateur = form.connecterUtilisateur( request );
 
         HttpSession session = request.getSession();
