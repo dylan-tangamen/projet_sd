@@ -26,12 +26,25 @@
       				<li class="nav-item">
       					<a class="nav-link" href="recherche">Recherche</a>
       				</li>
-      				<li class="nav-item">
-      					<a class="nav-link" href="#">Page 2</a>
-      				</li>
-     				<li class="nav-item">
-     					<a class="nav-link" href="#">Page 3</a>
-     				</li>
+      				<c:choose>
+				   	<c:when test="${empty sessionScope.sessionUtilisateur}">
+      					<li class="nav-item">
+      						<a class="nav-link" href="connexion">Connexion</a>
+      					</li>
+     					<li class="nav-item">
+     						<a class="nav-link" href="inscription">Inscription</a>
+     					</li>
+				    </c:when>    
+				    <c:otherwise>
+      					<li class="nav-item">
+      						<a class="nav-link" href="#">Profil</a>
+      					</li>
+     					<li class="nav-item">
+     						<a class="nav-link" href="deconnexion">Déconnexion</a>
+     					</li>
+				    </c:otherwise>
+					</c:choose>
+
     			</ul>
   			</div>
   		</div>

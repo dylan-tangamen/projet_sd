@@ -24,7 +24,7 @@ public class Inscription extends HttpServlet {
 	 public static final String CONF_DAO_FACTORY = "daofactory";
 	    public static final String ATT_USER         = "utilisateur";
 	    public static final String ATT_FORM         = "form";
-	    public static final String VUE              = "/WEB-INF/inscription.jsp";
+	    public static final String VUE              = "/WEB-INF/Inscription.jsp";
 	    
 	    public static final String CHAMP_EMAIL  = "email";
 	    public static final String CHAMP_PASS   = "mdp";
@@ -37,7 +37,7 @@ public class Inscription extends HttpServlet {
 
 	    public void init() throws ServletException {
 	    	
-	        /* Récupération d'une instance de notre DAO Utilisateur */
+	        /* Rï¿½cupï¿½ration d'une instance de notre DAO Utilisateur */
 	        this.utilisateurDao = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getUtilisateurDao();
 	    }
 
@@ -51,7 +51,7 @@ public class Inscription extends HttpServlet {
 	    	String resultat;
 	    	Map<String, String> erreurs = new HashMap<String, String>();
 
-	        /* Récupération des champs du formulaire. */
+	        /* Rï¿½cupï¿½ration des champs du formulaire. */
 	        String email = request.getParameter( CHAMP_EMAIL );
 	        String mdp = request.getParameter( CHAMP_PASS );
 	        String confirmation = request.getParameter( CHAMP_CONF );
@@ -78,26 +78,26 @@ public class Inscription extends HttpServlet {
 	            erreurs.put( CHAMP_NOM, e.getMessage() );
 	        }
 
-	        /* Initialisation du résultat global de la validation. */
+	        /* Initialisation du rï¿½sultat global de la validation. */
 	        if ( erreurs.isEmpty() ) {
-	            resultat = "Succès de l'inscription.";
+	            resultat = "Succï¿½s de l'inscription.";
 	        } else {
-	            resultat = "Échec de l'inscription.";
+	            resultat = "ï¿½chec de l'inscription.";
 	        }
 
-	        /* Stockage du résultat et des messages d'erreur dans l'objet request */
+	        /* Stockage du rï¿½sultat et des messages d'erreur dans l'objet request */
 	        request.setAttribute( ATT_ERREURS, erreurs );
 	        request.setAttribute( ATT_RESULTAT, resultat );
 
-	        /* Transmission de la paire d'objets request/response à notre JSP */
+	        /* Transmission de la paire d'objets request/response ï¿½ notre JSP */
 	        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	    
 	    	
 	    	
-	    	/* Préparation de l'objet formulaire */
+	    	/* Prï¿½paration de l'objet formulaire */
 	        InscriptionForm form = new InscriptionForm( utilisateurDao );
 
-	        /* Traitement de la requête et récupération du bean en résultant */
+	        /* Traitement de la requï¿½te et rï¿½cupï¿½ration du bean en rï¿½sultant */
 	        Utilisateur utilisateur = form.inscrireUtilisateur( request );
 
 	        /* Stockage du formulaire et du bean dans l'objet request */
@@ -123,9 +123,9 @@ public class Inscription extends HttpServlet {
 	    private void validationMdp( String mdp, String confirmation ) throws Exception{
 	        if (mdp != null && mdp.trim().length() != 0 && confirmation != null && confirmation.trim().length() != 0) {
 	            if (!mdp.equals(confirmation)) {
-	                throw new Exception("Les mots de passe entrés sont différents, merci de les saisir à nouveau.");
+	                throw new Exception("Les mots de passe entrï¿½s sont diffï¿½rents, merci de les saisir ï¿½ nouveau.");
 	            } else if (mdp.trim().length() < 3) {
-	                throw new Exception("Les mots de passe doivent contenir au moins 3 caractères.");
+	                throw new Exception("Les mots de passe doivent contenir au moins 3 caractï¿½res.");
 	            }
 	        } else {
 	            throw new Exception("Merci de saisir et confirmer votre mot de passe.");
@@ -137,7 +137,7 @@ public class Inscription extends HttpServlet {
 	     */
 	    private void validationPseudo( String pseudo ) throws Exception {
 	        if ( pseudo != null && pseudo.trim().length() < 3 ) {
-	            throw new Exception( "Le pseudo doit contenir au moins 3 caractères." );
+	            throw new Exception( "Le pseudo doit contenir au moins 3 caractï¿½res." );
 	        }
 	    }
 	
