@@ -17,7 +17,7 @@
 	<div class="container">
 	<h1>Recherche</h1>
 	<p class="lead">
-		<c:out value="La bibliothèque JSTL est fonctionnelle."/>
+		Consultation et modification des jeux
 	</p>
 	</div>
 	

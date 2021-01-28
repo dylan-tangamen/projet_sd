@@ -26,9 +26,6 @@
     
     <div class="container">
     	<div class="row content">
-    	  <div class="col-md-6 mb-3">
-    		
-    	  </div>
     	  
     	  <div class="col-md-6">
     	    <h3 class="signin-text mb-3">Connexion</h3>
@@ -44,9 +41,9 @@
 	                <span class="erreur">${form.erreurs['motdepasse']}</span>
 	    	      </div>
 	    	      <input type="submit" value="Connexion" class="btn btn-primary" />
-	    	       </div>
-	            </div>
-	            </div>
+	   	</div>
+	 	</div>
+	 </div>
 	            
     	      
           </form>
