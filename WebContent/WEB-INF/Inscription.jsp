@@ -16,52 +16,42 @@
             <fieldset>
             
             	<div class="container">
-            		<div class="row">
+            		<div class="form-group">
             			<div class="col-md-7">
             				<h1 class="text-left">Inscription</h1>
             				<p class="text-left">Vous pouvez vous inscrire via ce formulaire.</p>
-            			</div>	
-            			<div class="col-md-5">
-             				<!-- colonnes -->
-             				<div class="row">
-             					<div class="col-md-6">
-             						<h3 class="text-write">Inscription !</h3>
-             					 </div>
-               					<div class="col-md-6"></div>
-               					<span class="glyphicon glyphicon-pencil"></span>
-             				 </div>
-             				 <hr>
-             				<!-- close -->
-             				<div class="row">
-             					<label class="label col-md-2 control-label">email</label>
+            			
+            			<div class="form-group">
+             					<label for="email">Email</label>
              					<div class="col-md-10">
-             						<input type="email" class="form-control" id="email" name="email" value="<c:out value="${param.email}"/>" placeholder="email" />
+             						<input type="email" class="form-control" id="email" name="email" value="<c:out value="${param.email}"/>"  />
              						<span class="erreur">${erreurs['email']}</span>
              					</div>
              				</div>
-             				<div class="row">
-             					<label class="label col-md-2 control-label">Mot de passe</label>
+             				<div class="form-group">
+             					<label for="mdp">Mot de passe</label>
              					<div class="col-md-10">
-             						<input type="password" class="form-control" id="mdp" name="mdp" value="<c:out value="${param.mdp}"/>" placeholder="mdp" />
+             						<input type="password" class="form-control" id="mdp" name="mdp" value="<c:out value="${param.mdp}"/>"  />
              						<span class="erreur">${erreurs['mdp']}</span>
              					</div>
              				</div>
-             				<div class="row">
-             					<label class="label col-md-2 control-label">Confirmation mot de passe</label>
+             				<div class="form-group">
+             					<label for="confirmation">Confirmation mot de passe</label>
              					<div class="col-md-10">
-             						<input type="password" class="form-control" id="confirmation" name="confirmation" value="<c:out value="${param.confirmation}"/>" placeholder="confirmation" />
+             						<input type="password" class="form-control" id="confirmation" name="confirmation" value="<c:out value="${param.confirmation}"/>"  />
              						<span class="erreur">${erreurs['confirmation']}</span>
              					</div>
              				</div>
-             				<div class="row">
-             					<label class="label col-md-2 control-label">Pseudo</label>
+             				<div class="form-group">
+             					<label for="pseudo">Pseudo</label>
              					<div class="col-md-10">
-             						<input type="text" class="form-control" id="pseudo" name="pseudo" value="<c:out value="${param.pseudo}"/>" placeholder="pseudo" />
+             						<input type="text" class="form-control" id="pseudo" name="pseudo" value="<c:out value="${param.pseudo}"/>"  />
              						 <span class="erreur">${erreurs['pseudo']}</span>
              					</div>
              				</div>
-             				<input type="submit" value="Inscription" class="sansLabel" />
+             				<input type="submit" value="Inscription" class="btn btn-primary" />
              				<br />
+            			
              				
              				
              			 </div>

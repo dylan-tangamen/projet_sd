@@ -21,12 +21,15 @@
     <jsp:include page="/WEB-INF/MainNavbar.jsp"/>
         <form method="post" action="<c:url value="/connexion" />">
             <fieldset>
+            
+            
     
     <div class="container">
     	<div class="row content">>
     	  <div class="col-md-6 mb-3">
-    		<img src="img.svg" class="img-fluid" alt="image">
+    		
     	  </div>
+    	  
     	  <div class="col-md-6">
     	    <h3 class="signin-text mb-3">Connexion</h3>
     	    
@@ -44,6 +47,7 @@
 	    	       </div>
 	            </div>
 	            </div>
+	            
     	      
           </form>
                 
