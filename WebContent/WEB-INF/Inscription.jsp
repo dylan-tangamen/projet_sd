@@ -4,13 +4,14 @@
 <html>
     <head>
     	<meta charset="utf-8" />
-    	<link rel="stylesheet" type="text/css" href="css/Bootstrap.css">
-    	<link rel="stylesheet" type="text/css" href="js/Bootstrap.js">
         <link rel = "stylesheet" type="text/css" href="style.css">
         <title>Inscription</title>
+                <!-- Linking Bootstrap built in css -->
+		<link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">
         
     </head>
     <body>
+    	<jsp:include page="/WEB-INF/MainNavbar.jsp"/>
         <form method="post" action="inscription">
             <fieldset>
             
@@ -35,21 +36,21 @@
              					<label class="label col-md-2 control-label">email</label>
              					<div class="col-md-10">
              						<input type="email" class="form-control" id="email" name="email" value="<c:out value="${param.email}"/>" placeholder="email" />
-             						 <span class="erreur">${erreurs['email']}</span>
+             						<span class="erreur">${erreurs['email']}</span>
              					</div>
              				</div>
              				<div class="row">
              					<label class="label col-md-2 control-label">Mot de passe</label>
              					<div class="col-md-10">
              						<input type="password" class="form-control" id="mdp" name="mdp" value="<c:out value="${param.mdp}"/>" placeholder="mdp" />
-             						 <span class="erreur">${erreurs['mdp']}</span>
+             						<span class="erreur">${erreurs['mdp']}</span>
              					</div>
              				</div>
              				<div class="row">
              					<label class="label col-md-2 control-label">Confirmation mot de passe</label>
              					<div class="col-md-10">
              						<input type="password" class="form-control" id="confirmation" name="confirmation" value="<c:out value="${param.confirmation}"/>" placeholder="confirmation" />
-             						 <span class="erreur">${erreurs['confirmation']}</span>
+             						<span class="erreur">${erreurs['confirmation']}</span>
              					</div>
              				</div>
              				<div class="row">
@@ -64,9 +65,13 @@
              				
              				
              			 </div>
-                  		</div>
-                 	</div>
-      
+                  	</div>
+                  	<div class="col-md-7">
+            			<h1 class="text-left">Déjà inscrit ?</h1>
+						<a href="/projet_sd/connexion">Connectez-vous !</a>
+            		</div>	
+               </div>
+
                 
                 <p class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</p>
             </fieldset>

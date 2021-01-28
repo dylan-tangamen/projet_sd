@@ -6,8 +6,11 @@
         <meta charset="utf-8" />
         <title>Connexion</title>
         <link type="text/css" rel="stylesheet" href="form.css" />
+        <!-- Linking Bootstrap built in css -->
+		<link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">
     </head>
     <body>
+        <jsp:include page="/WEB-INF/MainNavbar.jsp"/>
         <form method="post" action="<c:url value="/connexion" />">
             <fieldset>
                 <legend>Connexion</legend>

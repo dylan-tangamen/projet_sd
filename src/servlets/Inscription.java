@@ -25,6 +25,8 @@ public class Inscription extends HttpServlet {
 	    public static final String ATT_USER         = "utilisateur";
 	    public static final String ATT_FORM         = "form";
 	    public static final String VUE              = "/WEB-INF/Inscription.jsp";
+	    public static final String CURRENT			= "/projet_sd/inscription";
+	    public static final String NEXT				= "/projet_sd/connexion";
 	    
 	    public static final String CHAMP_EMAIL  = "email";
 	    public static final String CHAMP_PASS   = "mdp";
@@ -99,15 +101,15 @@ public class Inscription extends HttpServlet {
 
 	        /* Traitement de la requ�te et r�cup�ration du bean en r�sultant */
 	        Utilisateur utilisateur = form.inscrireUtilisateur( request );
-	        request.setAttribute( ATT_RESULTAT, form.getResultat() );
-	        System.out.println(form.getResultat());
-	        System.out.println(utilisateur);
 
 	        /* Stockage du formulaire et du bean dans l'objet request */
 	        request.setAttribute( ATT_FORM, form );
 	        request.setAttribute( ATT_USER, utilisateur );
+	        request.setAttribute( ATT_RESULTAT, form.getResultat() );
+	        System.out.println(form.getResultat());
+	        System.out.println(utilisateur);
 
-	        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    		response.sendRedirect(CURRENT);	
 	        
 	    }
 	    
