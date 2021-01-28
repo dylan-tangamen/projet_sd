@@ -3,42 +3,58 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        
+        <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Game Hub - Connexion</title>
-        <link type="text/css" rel="stylesheet" href="form.css" />
+        
+        
+        
+        
         <!-- Linking Bootstrap built in css -->
 		<link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">
+		
     </head>
     <body>
-        <jsp:include page="/WEB-INF/MainNavbar.jsp"/>
+    
+    <jsp:include page="/WEB-INF/MainNavbar.jsp"/>
         <form method="post" action="<c:url value="/connexion" />">
             <fieldset>
-                <legend>Connexion</legend>
-                <p>Connectez-vous ici ! </p>
-
-                <label for="nom">Adresse email <span class="requis">*</span></label>
-                <input type="email" id="email" name="email" value="<c:out value="${utilisateur.email}"/>" size="20" maxlength="60" />
-                <span class="erreur">${form.erreurs['email']}</span>
-                
-
-                <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
-                <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
-                <span class="erreur">${form.erreurs['motdepasse']}</span>
-
-
-                <input type="submit" value="Connexion" class="sansLabel" />
-                
+    
+    <div class="container">
+    	<div class="row content">>
+    	  <div class="col-md-6 mb-3">
+    		<img src="img.svg" class="img-fluid" alt="image">
+    	  </div>
+    	  <div class="col-md-6">
+    	    <h3 class="signin-text mb-3">Connexion</h3>
+    	    
+	    	      <div class="form-group">
+	    	         <label for="email">Adresse email <span class="requis">*</span></label>
+	                 <input type="email" class="form-control" id="email" name="email" value="<c:out value="${utilisateur.email}"/>" />
+	                 <span class="erreur">${form.erreurs['email']}</span>
+	    	      </div>
+	    	      <div class="form-group">
+	    	        <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
+	                <input type="password" class="form-control" id="motdepasse" name="motdepasse" value=""  />
+	                <span class="erreur">${form.erreurs['motdepasse']}</span>
+	    	      </div>
+	    	      <input type="submit" value="Connexion" class="btn btn-primary" />
+	    	       </div>
+	            </div>
+	            </div>
+    	      
+          </form>
                 
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
                 
                 <c:if test="${!empty sessionScope.sessionUtilisateur}">
                  
                     <p class="succes">Vous êtes connecté(e) avec l'adresse : ${sessionScope.sessionUtilisateur.email}</p>
+            
                 </c:if>
-            </fieldset>
-        </form>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+                
+            </fieldset>    
     </body>
 </html>
