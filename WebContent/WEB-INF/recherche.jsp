@@ -21,6 +21,11 @@
 <h2>Liste de jeux :</h2>
 
 <table>
+	<tr>
+		<th>Titre</th>
+		<th>Sortie</th>
+		<th>Studio</th>
+	</tr>
 	<c:forEach items="${listeJeux}" var="jeu">
 		<tr>
 			<td>
@@ -28,6 +33,9 @@
 			</td>
 			<td>
 			<c:out value="${jeu.anneeSortie}"></c:out>
+			</td>
+			<td>
+			<c:out value="${jeu.studio}"></c:out>
 			</td>
 		</tr>
 	</c:forEach>
@@ -41,51 +49,65 @@
 		<input type="submit" value="Rechercher"/>
 	</form>
 </p>
-<c:choose>
-<c:when test="${searched[0]==null}">
 <table>
+<c:choose>
+
+<c:when test="${searched[0]==null}">
+<!-- Si la recherche est vide (aucun résultat ou premier chargement de la page, on renvoie tous les titres de jeux -->
 	<c:out value="${search}"></c:out>
+	<tr>
+		<th>Titre</th>
+	</tr>
 	<c:forEach items="${listeJeux}" var="jeu">
 	<tr>
 		<td>
-		<c:out value="${jeu.titre}"></c:out>
+		<c:out value="${jeu.titre}"> </c:out>
 		</td>
 	</tr>
 	</c:forEach>
-</table>
 </c:when>
+
 <c:otherwise>
-<table>
+<!-- Sinon on renvoie les jeux de la recherche, avec plus d'informations -->
+	<tr>
+		<th>Titre</th>
+		<th>Sortie</th>
+		<th>Studio</th>
+		<th>Description</th>
+	</tr>
 	<c:forEach items="${searched}" var="jeu">
 	<tr>
 		<td>
-		<c:out value="${jeu.titre}"></c:out>
+		<c:out value="${jeu.titre}"> </c:out>
 		</td>
 		<td>
-		<c:out value="${jeu.studio}"></c:out>
+		<c:out value="${jeu.anneeSortie}"></c:out>
+		</td>
+		<td>
+		<c:out value="${jeu.studio}"> </c:out>
+		</td>
+		<td>
+		<c:out value="${jeu.description}"> </c:out>
 		</td>
 	</tr>
 	</c:forEach>
-</table>
 </c:otherwise>
+
 </c:choose>
+</table>
 
 <h2>Ajout de jeu</h2>
 <p>Attention, l'apostrophe, les guillemets et les parenthèses ne sont pas supportées par notre système. Veuillez vous abstenir d'entrer un titre en contenant.<br>Ne vous inquiétez pas, ce problème sera bientôt résolu. Nous travaillons dur pour vous permettre d'ajouter vos jeux favoris à nos services.</p>
 <form  method="post" action="">
-	<label for="idJ"> IdJ : </label>
-	<input type="number" id="addId" name="addId"/>
 	<label for="titre"> Titre : </label>
-	<input type="text" id="addTitre" name="addTitre"/>
-	<label for="image"> Image : </label>
-	<input type="text" id="addImage" name="addImage"/>
+	<input type="text" id="addTitre" name="addTitre"/><br>
 	<label for="anneeSortie"> Année de sortie : </label>
-	<input type="text" id="addAnneeSortie" name="addAnneeSortie"/>
+	<input type="text" id="addAnneeSortie" name="addAnneeSortie"/><br>
 	<label for="studio"> Studio : </label>
-	<input type="text" id="addStudio" name="addStudio"/>
+	<input type="text" id="addStudio" name="addStudio"/><br>
 	<label for="description"> Description : </label>
-	<input type="text" id="addDescription" name="addDescription"/>
-	<input type="submit" name="add" value="Ajouter"/>  
+	<input type="text" id="addDescription" name="addDescription"/><br>
+	<input type="submit" name="add" value="Ajouter"/> 
 </form>
 
 <h2>Suppression de jeu</h2>
@@ -107,14 +129,15 @@
 		<option value="${jeu.titre}">${jeu.titre}</option>
 	</c:forEach>
 	</select>
+	<br>
 	<label for="champs"> Champs à modifier :</label>
 	<select id="updChamps" name="updChamps">
 		<option value="Titre">Titre</option>
-		<option value="Image">Image</option>
 		<option value="AnneeSortie">AnneeSortie</option>
 		<option value="Studio">Studio</option>
 		<option value="Description">Description</option>
 	</select>
+	<br>
 	<label for="nouvelle valeur"> Nouvelle valeur :</label>
 	<input type="text" id="updValeur" name="updValeur"/>
 	<input type="submit" name="update" value="Modifier le champs"/>

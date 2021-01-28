@@ -143,13 +143,13 @@ public class Jeux {
 	
 	// Ajoute un jeu à la base de donnée.
 	public void ajouterJeu(Jeu jeu) {
-		ajouterJeu(jeu.getIdJ(),jeu.getTitre(),jeu.getImage(), jeu.getAnneeSortie(), jeu.getStudio(), jeu.getDescription());
+		ajouterJeu(jeu.getTitre(), jeu.getAnneeSortie(), jeu.getStudio(), jeu.getDescription());
 	}
 	public void ajouterJeu(HttpServletRequest request) {
-		ajouterJeu(Integer.parseInt(request.getParameter("addIdJ")), request.getParameter("addTitre"),request.getParameter("image"), Integer.parseInt(request.getParameter("anneeSortie")), request.getParameter("studio"), request.getParameter("description)"));	
+		ajouterJeu(request.getParameter("addTitre"), Integer.parseInt(request.getParameter("addAnneeSortie")), request.getParameter("addStudio"), request.getParameter("addDescription"));	
 	}
-	public void ajouterJeu(int idJ, String titre,String image, int anneeSortie, String studio, String description) {
-		String requeteSQL="INSERT INTO `jeux`(`idJ`, `titre`, `image`,`anneeSortie`, `studio`, `description` ) VALUES ("+idJ+"','"+titre+"','"+image+"','"+anneeSortie+"','"+studio+"','"+description+")";
+	public void ajouterJeu(String titre, int anneeSortie, String studio, String description) {
+		String requeteSQL="INSERT INTO `jeux`(`titre`,`anneeSortie`, `studio`, `description` ) VALUES ('"+titre+"','"+anneeSortie+"','"+studio+"','"+description+"')";
 
 		seConnecter();
 		
@@ -159,14 +159,12 @@ public class Jeux {
 		
 		try {
 		//Prévention des failles d'injection SQL via prepareStatement
-			prepstatement = connection.prepareStatement("INSERT INTO `jeux`(`idJ`, `titre`, `image`,`anneeSortie`,`studio`,`description`) VALUES (?,?,?,?,?,?);");
+			prepstatement = connection.prepareStatement("INSERT INTO `jeux`(`titre`,`anneeSortie`,`studio`,`description`) VALUES (?,?,?,?);");
 		// Construire la requête
-			prepstatement.setInt(1, idJ);
-			prepstatement.setString(2, titre);
-			prepstatement.setString(3, image);
-			prepstatement.setInt(3, anneeSortie);
+			prepstatement.setString(1, titre);
+			prepstatement.setInt(2, anneeSortie);
 			prepstatement.setString(3, studio);
-			prepstatement.setString(3, description);
+			prepstatement.setString(4, description);
 		// Exécution de la requête
 			prepstatement.executeUpdate();
 		} catch (SQLException e) {
