@@ -17,10 +17,16 @@
 <body>
 	<jsp:include page="WEB-INF/MainNavbar.jsp"/>
 	
-	
-	<p>
-		<c:out value="La bibliothèque JSTL est fonctionnelle."/>
+	<div class="jumbotron text-center">
+	<div class="container">
+	<h1>Bienvenue sur le Game Hub !</h1>
+	<p class="lead">
+		Le site est en cours de construction !
+		Mais vous pouvez déjà vous inscrire !
 	</p>
+	</div>
+	
+</div>
 
 
 

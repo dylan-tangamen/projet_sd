@@ -9,7 +9,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-primary" >
-  		<div class="container-fluid">
+  		<div class="container">
   		    <div class="navbar-header">
       			<span class="navbar-brand">Game Hub</span>
     		</div>

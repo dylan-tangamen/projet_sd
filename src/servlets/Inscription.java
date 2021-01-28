@@ -106,6 +106,7 @@ public class Inscription extends HttpServlet {
 	        request.setAttribute( ATT_FORM, form );
 	        request.setAttribute( ATT_USER, utilisateur );
 	        request.setAttribute( ATT_RESULTAT, form.getResultat() );
+	        request.setAttribute(ATT_ERREURS, form.getErreurs());
 	        System.out.println(form.getResultat());
 	        System.out.println(utilisateur);
 
