@@ -19,6 +19,10 @@ public class Utilisateur {
 	    public Utilisateur() {
 	    	super();
 	    }
+	    @Override
+	    public String toString() {
+	    	return "pseudo : "+pseudo+" email : "+email;
+	    }
 
 	    public void setEmail(String email) {
 		this.email = email;

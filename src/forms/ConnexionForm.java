@@ -5,7 +5,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
+
 import beans.Utilisateur;
+import dao.DAOFactory;
+import dao.UtilisateurDao;
+import dao.UtilisateurDaoImpl;
 
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";
@@ -14,7 +19,15 @@ public final class ConnexionForm {
     private String              resultat;
     private Map<String, String> erreurs      = new HashMap<String, String>();
 
-    public String getResultat() {
+    private UtilisateurDao      utilisateurDao;
+    
+    private static final String ALGO_CHIFFREMENT = "SHA-256";
+    
+    public ConnexionForm(UtilisateurDao utilisateurDao) {
+        this.utilisateurDao = utilisateurDao;
+	}
+
+	public String getResultat() {
         return resultat;
     }
 
@@ -28,10 +41,12 @@ public final class ConnexionForm {
         String mdp = getValeurChamp( request, CHAMP_PASS );
 
         Utilisateur utilisateur = new Utilisateur();
-
+        Utilisateur foundUser = null;
+        
         try {
-            validationEmail( email );
-            System.out.println("email set");
+            //validationEmail( email );
+            foundUser=utilisateurDao.trouver(email);
+            System.out.println("email set "+foundUser);
         } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
             System.out.println("email erreur ");
@@ -39,7 +54,8 @@ public final class ConnexionForm {
         utilisateur.setEmail( email );
 
         try {
-            validationMdp( mdp );
+
+			validationMdp( foundUser, mdp );
             System.out.println("mdp correct");
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
@@ -59,16 +75,25 @@ public final class ConnexionForm {
     private void validationEmail( String email ) throws Exception {
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
             throw new Exception( "Merci de saisir une adresse mail valide." );
+        } else {
+        	if (utilisateurDao.trouver(email)==null) {
+        		throw new Exception( "Adresse mail non reconnue. " +utilisateurDao.trouver(email));
+        	}
         }
     }
 
-    private void validationMdp( String mdp ) throws Exception {
-        if ( mdp != null ) {
-            if ( mdp.length() < 3 ) {
-                throw new Exception( "Le mot de passe doit contenir au moins 3 caract�res." );
-            }
+    private void validationMdp( Utilisateur user, String mdp ) throws Exception {
+        ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
+        passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
+        passwordEncryptor.setPlainDigest( false );
+        String mdpChiffre = passwordEncryptor.encryptPassword( mdp );
+    	if ( mdp != null ) {
+            if (mdpChiffre.equals(user.getMdp())) {
+
+            	throw new Exception( "Mot de passe incorrect.\n"+mdpChiffre+"\n"+user.getMdp() );
+            } 
         } else {
-            throw new Exception( "Merci de saisir votre mot de passe." );
+            throw new Exception( "Merci de saisir un mot de passe." );
         }
     }
 

@@ -51,12 +51,12 @@ public class InscriptionForm {
 
             if ( erreurs.isEmpty() ) {
                 utilisateurDao.creer( utilisateur );
-                resultat = "Succès de l'inscription.";
+                resultat = "Succï¿½s de l'inscription.";
             } else {
-                resultat = "Échec de l'inscription.";
+                resultat = "ï¿½chec de l'inscription.";
             }
         } catch ( DAOException e ) {
-            resultat = "Échec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
+            resultat = "ï¿½chec de l'inscription : une erreur imprï¿½vue est survenue, merci de rï¿½essayer dans quelques instants.";
             e.printStackTrace();
         }
 
@@ -105,7 +105,7 @@ public class InscriptionForm {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
                 throw new FormValidationException( "Merci de saisir une adresse mail valide." );
             } else if ( utilisateurDao.trouver( email ) != null ) {
-                throw new FormValidationException( "Cette adresse email est dÃ©jÃ  utilisÃ©e, merci d'en choisir une autre." );
+                throw new FormValidationException( "Cette adresse email est dÃ©jï¿½  utilisÃ©e, merci d'en choisir une autre." );
             }
         } else {
             throw new FormValidationException( "Merci de saisir une adresse mail." );
@@ -115,7 +115,7 @@ public class InscriptionForm {
     private void validationMdp( String mdp, String confirmation ) throws FormValidationException {
         if ( mdp != null && confirmation != null ) {
             if ( !mdp.equals( confirmation ) ) {
-                throw new FormValidationException( "Les mots de passe entrÃ©s sont diffÃ©rents, merci de les saisir Ã  nouveau." );
+                throw new FormValidationException( "Les mots de passe entrÃ©s sont diffÃ©rents, merci de les saisir ï¿½  nouveau." );
             } else if ( mdp.length() < 3 ) {
                 throw new FormValidationException( "Les mots de passe doivent contenir au moins 3 caractÃ¨res." );
             }
