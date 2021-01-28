@@ -5,7 +5,7 @@
     <head>
     	<meta charset="utf-8" />
         <link rel = "stylesheet" type="text/css" href="style.css">
-        <title>Inscription</title>
+        <title>Game Hub - Inscription</title>
                 <!-- Linking Bootstrap built in css -->
 		<link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">
         

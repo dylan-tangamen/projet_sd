@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Connexion</title>
+        <title>Game Hub - Connexion</title>
         <link type="text/css" rel="stylesheet" href="form.css" />
         <!-- Linking Bootstrap built in css -->
 		<link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">

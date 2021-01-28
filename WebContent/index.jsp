@@ -10,7 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Projet SD - Accueil</title>
+	<title>Game Hub - Accueil</title>
 	<!-- Linking Bootstrap built in css -->
 	<link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">
 </head>

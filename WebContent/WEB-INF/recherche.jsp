@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Projet SD - Recherche</title>
+<title>Game Hub - Recherche</title>
 <link rel="stylesheet" href="Ressource/bootstrap_hosted/css/bootstrap.min.css">
 </head>
 <body>

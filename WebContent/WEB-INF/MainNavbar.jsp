@@ -11,7 +11,7 @@
 	<nav class="navbar navbar-expand-sm navbar-dark bg-primary" >
   		<div class="container-fluid">
   		    <div class="navbar-header">
-      			<span class="navbar-brand">Projet SD</span>
+      			<span class="navbar-brand">Game Hub</span>
     		</div>
   		  	
   		  	<!-- Collapse dépend de jquery et j'arrive pas à l'importer -->
