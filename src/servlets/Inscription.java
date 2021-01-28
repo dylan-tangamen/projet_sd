@@ -3,8 +3,8 @@ package servlets;
 
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +24,7 @@ public class Inscription extends HttpServlet {
 	 public static final String CONF_DAO_FACTORY = "daofactory";
 	    public static final String ATT_USER         = "utilisateur";
 	    public static final String ATT_FORM         = "form";
-	    public static final String VUE              = "/WEB-INF/inscription.jsp";
+	    public static final String VUE              = "/WEB-INF/Inscription.jsp";
 	    
 	    public static final String CHAMP_EMAIL  = "email";
 	    public static final String CHAMP_PASS   = "mdp";
