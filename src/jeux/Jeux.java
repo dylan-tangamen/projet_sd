@@ -1,4 +1,4 @@
-package fr.polytech;
+package jeux;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -75,10 +75,13 @@ public class Jeux {
 			resultSet = statement.executeQuery("SELECT * FROM `jeux`");
 		// Récupération des données
 			while(resultSet.next()) {
-				int id = resultSet.getInt("idJ");
+				int idJ = resultSet.getInt("idJ");
 				String titre = resultSet.getString("titre");
-				String genre = resultSet.getString("genre");
-				resultat.add(new Jeu(id, titre, genre));
+				String image = resultSet.getString("image");
+				int anneeSortie = resultSet.getInt("anneeSortie");
+				String studio = resultSet.getString("studio");
+				String description = resultSet.getString("description");
+				resultat.add(new Jeu(idJ, titre, image, anneeSortie, studio, description));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de connexion à db_daoperso. "+e);
@@ -110,15 +113,18 @@ public class Jeux {
 		try {
 			statement = connection.createStatement();
 		// Exécuter une requête
-			String requeteSQL="SELECT * FROM `jeux` WHERE `titre` LIKE '%"+condition+"%' OR `genre` LIKE '%"+condition+"%';";
+			String requeteSQL="SELECT * FROM `jeux` WHERE `titre` LIKE '%"+condition+"%' OR `image` LIKE '%"+condition+"%' OR `anneeSortie` LIKE '%"+condition+"%' OR `studio` LIKE '%"+condition+"%' OR `description` LIKE '%"+condition+"'";
 			resultSet = statement.executeQuery(requeteSQL);
 			System.out.println(requeteSQL);
 		// Récupération des données
 			while(resultSet.next()) {
-				int id = resultSet.getInt("idJ");
+				int idJ = resultSet.getInt("idJ");
 				String titre = resultSet.getString("titre");
-				String genre = resultSet.getString("genre");
-				resultat.add(new Jeu(id, titre, genre));
+				String image = resultSet.getString("image");
+				int anneeSortie = resultSet.getInt("anneeSortie");
+				String studio = resultSet.getString("studio");
+				String description = resultSet.getString("description");
+				resultat.add(new Jeu(idJ, titre, image, anneeSortie, studio, description));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de connexion à db_daoperso. "+e);
@@ -137,13 +143,13 @@ public class Jeux {
 	
 	// Ajoute un jeu à la base de donnée.
 	public void ajouterJeu(Jeu jeu) {
-		ajouterJeu(jeu.getId(),jeu.getTitre(),jeu.getGenre());
+		ajouterJeu(jeu.getTitre(), jeu.getAnneeSortie(), jeu.getStudio(), jeu.getDescription());
 	}
 	public void ajouterJeu(HttpServletRequest request) {
-		ajouterJeu(Integer.parseInt(request.getParameter("addId")), request.getParameter("addTitre"),request.getParameter("addGenre"));	
+		ajouterJeu(request.getParameter("addTitre"), Integer.parseInt(request.getParameter("addAnneeSortie")), request.getParameter("addStudio"), request.getParameter("addDescription"));	
 	}
-	public void ajouterJeu(int id, String titre, String genre) {
-		String requeteSQL="INSERT INTO `jeux`(`idJ`, `titre`, `genre`) VALUES ("+id+",'"+titre+"','"+genre+"')";
+	public void ajouterJeu(String titre, int anneeSortie, String studio, String description) {
+		String requeteSQL="INSERT INTO `jeux`(`titre`,`anneeSortie`, `studio`, `description` ) VALUES ('"+titre+"','"+anneeSortie+"','"+studio+"','"+description+"')";
 
 		seConnecter();
 		
@@ -153,11 +159,12 @@ public class Jeux {
 		
 		try {
 		//Prévention des failles d'injection SQL via prepareStatement
-			prepstatement = connection.prepareStatement("INSERT INTO `jeux`(`idJ`, `titre`, `genre`) VALUES (?,?,?);");
+			prepstatement = connection.prepareStatement("INSERT INTO `jeux`(`titre`,`anneeSortie`,`studio`,`description`) VALUES (?,?,?,?);");
 		// Construire la requête
-			prepstatement.setInt(1, id);
-			prepstatement.setString(2, titre);
-			prepstatement.setString(3, genre);
+			prepstatement.setString(1, titre);
+			prepstatement.setInt(2, anneeSortie);
+			prepstatement.setString(3, studio);
+			prepstatement.setString(4, description);
 		// Exécution de la requête
 			prepstatement.executeUpdate();
 		} catch (SQLException e) {

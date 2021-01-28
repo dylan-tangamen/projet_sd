@@ -9,9 +9,9 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-primary" >
-  		<div class="container-fluid">
+  		<div class="container">
   		    <div class="navbar-header">
-      			<span class="navbar-brand">Projet SD</span>
+      			<span class="navbar-brand">Game Hub</span>
     		</div>
   		  	
   		  	<!-- Collapse dépend de jquery et j'arrive pas à l'importer -->
@@ -26,16 +26,31 @@
       				<li class="nav-item">
       					<a class="nav-link" href="recherche">Recherche</a>
       				</li>
-      				<li class="nav-item">
-      					<a class="nav-link" href="#">Page 2</a>
-      				</li>
-     				<li class="nav-item">
-     					<a class="nav-link" href="#">Page 3</a>
-     				</li>
+      				<c:choose>
+				   	<c:when test="${empty sessionScope.sessionUtilisateur}">
+      					<li class="nav-item">
+      						<a class="nav-link" href="connexion">Connexion</a>
+      					</li>
+     					<li class="nav-item">
+     						<a class="nav-link" href="inscription">Inscription</a>
+     					</li>
+				    </c:when>    
+				    <c:otherwise>
+      					<li class="nav-item">
+      						<a class="nav-link" href="#">Profil</a>
+      					</li>
+     					<li class="nav-item">
+     						<a class="nav-link" href="deconnexion">Déconnexion</a>
+     					</li>
+				    </c:otherwise>
+					</c:choose>
+
     			</ul>
   			</div>
   		</div>
     		
 	</nav>
+<!-- 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> -->
 </body>
 </html>
