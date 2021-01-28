@@ -21,7 +21,9 @@ public class Connexion extends HttpServlet {
     public static final String ATT_USER         = "utilisateur";
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String VUE              = "/WEB-INF/Connexion.jsp";
+    public static final String VUE		        = "/WEB-INF/Connexion.jsp";
+    public static final String NEXT				= "/projet_sd/";
+    public static final String CURRENT			= "/projet_sd/connexion";
 
     private UtilisateurDao     utilisateurDao;
 
@@ -33,6 +35,7 @@ public class Connexion extends HttpServlet {
     
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
@@ -51,6 +54,10 @@ public class Connexion extends HttpServlet {
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, utilisateur );
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        if (session.getAttribute(ATT_SESSION_USER)!=null) {
+        	response.sendRedirect(NEXT);
+        } else {
+    		response.sendRedirect(CURRENT);	
+        }
     }
 }
