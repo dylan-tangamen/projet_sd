@@ -50,10 +50,11 @@ public class InscriptionForm {
             traiterPseudo( pseudo, utilisateur );
 
             if ( erreurs.isEmpty() ) {
+            	System.out.println(erreurs);
                 utilisateurDao.creer( utilisateur );
                 resultat = "Succ�s de l'inscription.";
             } else {
-                resultat = "�chec de l'inscription.";
+                resultat = "�chec de l'inscription. "+erreurs;
             }
         } catch ( DAOException e ) {
             resultat = "�chec de l'inscription : une erreur impr�vue est survenue, merci de r�essayer dans quelques instants.";
@@ -67,6 +68,7 @@ public class InscriptionForm {
         try {
             validationEmail( email );
         } catch ( FormValidationException e ) {
+        	System.out.println("duplicata détecté");
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         utilisateur.setEmail( email );
