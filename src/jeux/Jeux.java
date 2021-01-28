@@ -78,10 +78,10 @@ public class Jeux {
 				int idJ = resultSet.getInt("idJ");
 				String titre = resultSet.getString("titre");
 				String image = resultSet.getString("image");
-				String dateSortie = resultSet.getString("dateSortie");
+				int anneeSortie = resultSet.getInt("anneeSortie");
 				String studio = resultSet.getString("studio");
 				String description = resultSet.getString("description");
-				resultat.add(new Jeu(idJ, titre, image, dateSortie, studio, description));
+				resultat.add(new Jeu(idJ, titre, image, anneeSortie, studio, description));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de connexion à db_daoperso. "+e);
@@ -113,7 +113,7 @@ public class Jeux {
 		try {
 			statement = connection.createStatement();
 		// Exécuter une requête
-			String requeteSQL="SELECT * FROM `jeux` WHERE `titre` LIKE '%"+condition+"%' OR `image` LIKE '%"+condition+"%' OR `dateSortie` LIKE '%"+condition+"%' OR `studio` LIKE '%"+condition+"%' OR `description` LIKE '%"+condition+"'";
+			String requeteSQL="SELECT * FROM `jeux` WHERE `titre` LIKE '%"+condition+"%' OR `image` LIKE '%"+condition+"%' OR `anneeSortie` LIKE '%"+condition+"%' OR `studio` LIKE '%"+condition+"%' OR `description` LIKE '%"+condition+"'";
 			resultSet = statement.executeQuery(requeteSQL);
 			System.out.println(requeteSQL);
 		// Récupération des données
@@ -121,10 +121,10 @@ public class Jeux {
 				int idJ = resultSet.getInt("idJ");
 				String titre = resultSet.getString("titre");
 				String image = resultSet.getString("image");
-				String dateSortie = resultSet.getString("dateSortie");
+				int anneeSortie = resultSet.getInt("anneeSortie");
 				String studio = resultSet.getString("studio");
 				String description = resultSet.getString("description");
-				resultat.add(new Jeu(idJ, titre, image, dateSortie, studio, description));
+				resultat.add(new Jeu(idJ, titre, image, anneeSortie, studio, description));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de connexion à db_daoperso. "+e);
@@ -143,13 +143,13 @@ public class Jeux {
 	
 	// Ajoute un jeu à la base de donnée.
 	public void ajouterJeu(Jeu jeu) {
-		ajouterJeu(jeu.getIdJ(),jeu.getTitre(),jeu.getImage(), jeu.getDateSortie(), jeu.getStudio(), jeu.getDescription());
+		ajouterJeu(jeu.getIdJ(),jeu.getTitre(),jeu.getImage(), jeu.getAnneeSortie(), jeu.getStudio(), jeu.getDescription());
 	}
 	public void ajouterJeu(HttpServletRequest request) {
-		ajouterJeu(Integer.parseInt(request.getParameter("addIdJ")), request.getParameter("addTitre"),request.getParameter("dateSortie"), request.getParameter("dateSortie"), request.getParameter("studio"), request.getParameter("description)"));	
+		ajouterJeu(Integer.parseInt(request.getParameter("addIdJ")), request.getParameter("addTitre"),request.getParameter("image"), Integer.parseInt(request.getParameter("anneeSortie")), request.getParameter("studio"), request.getParameter("description)"));	
 	}
-	public void ajouterJeu(int idJ, String titre,String image, String dateSortie, String studio, String description) {
-		String requeteSQL="INSERT INTO `jeux`(`idJ`, `titre`, `image`,`dateSortie`, `studio`, `description` ) VALUES ("+idJ+"','"+titre+"','"+image+"','"+dateSortie+"','"+studio+"','"+description+")";
+	public void ajouterJeu(int idJ, String titre,String image, int anneeSortie, String studio, String description) {
+		String requeteSQL="INSERT INTO `jeux`(`idJ`, `titre`, `image`,`anneeSortie`, `studio`, `description` ) VALUES ("+idJ+"','"+titre+"','"+image+"','"+anneeSortie+"','"+studio+"','"+description+")";
 
 		seConnecter();
 		
@@ -159,12 +159,12 @@ public class Jeux {
 		
 		try {
 		//Prévention des failles d'injection SQL via prepareStatement
-			prepstatement = connection.prepareStatement("INSERT INTO `jeux`(`idJ`, `titre`, `image`,`dateSortie`,`studio`,`description`) VALUES (?,?,?,?,?,?);");
+			prepstatement = connection.prepareStatement("INSERT INTO `jeux`(`idJ`, `titre`, `image`,`anneeSortie`,`studio`,`description`) VALUES (?,?,?,?,?,?);");
 		// Construire la requête
 			prepstatement.setInt(1, idJ);
 			prepstatement.setString(2, titre);
 			prepstatement.setString(3, image);
-			prepstatement.setString(3, dateSortie);
+			prepstatement.setInt(3, anneeSortie);
 			prepstatement.setString(3, studio);
 			prepstatement.setString(3, description);
 		// Exécution de la requête

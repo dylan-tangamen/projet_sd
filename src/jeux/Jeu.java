@@ -6,17 +6,17 @@ public class Jeu {
 	private int idJ;
 	private String titre;
 	private String image;
-	private String dateSortie;  //Essayer d'ajuster le code avec type Date
+	private int anneeSortie;  //Essayer d'ajuster le code avec type Date
 	private String studio;
 	private String description; //Type String peut-être léger	
 	
 	
-	public Jeu(int idJ, String titre, String image, String dateSortie, String studio, String description) {
+	public Jeu(int idJ, String titre, String image, int anneeSortie, String studio, String description) {
 		super();
 		this.idJ = idJ;
 		this.titre = titre;
 		this.image = image;
-		this.dateSortie = dateSortie;
+		this.anneeSortie = anneeSortie;
 		this.studio = studio;
 		this.description = description;
 	}
@@ -45,12 +45,17 @@ public class Jeu {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public String getDateSortie() {
-		return dateSortie;
+	
+	public int getAnneeSortie() {
+		return anneeSortie;
 	}
-	public void setDateSortie(String dateSortie) {
-		this.dateSortie = dateSortie;
+
+
+	public void setAnneeSortie(int anneeSortie) {
+		this.anneeSortie = anneeSortie;
 	}
+
+
 	public String getStudio() {
 		return studio;
 	}

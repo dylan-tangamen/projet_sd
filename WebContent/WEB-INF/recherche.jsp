@@ -27,7 +27,7 @@
 			<c:out value="${jeu.titre}"></c:out>
 			</td>
 			<td>
-			<c:out value="${jeu.dateSortie}"></c:out>
+			<c:out value="${jeu.anneeSortie}"></c:out>
 			</td>
 		</tr>
 	</c:forEach>
@@ -73,14 +73,14 @@
 <h2>Ajout de jeu</h2>
 <p>Attention, l'apostrophe, les guillemets et les parenthèses ne sont pas supportées par notre système. Veuillez vous abstenir d'entrer un titre en contenant.<br>Ne vous inquiétez pas, ce problème sera bientôt résolu. Nous travaillons dur pour vous permettre d'ajouter vos jeux favoris à nos services.</p>
 <form  method="post" action="">
-	<label for="id"> IdJ : </label>
+	<label for="idJ"> IdJ : </label>
 	<input type="number" id="addId" name="addId"/>
 	<label for="titre"> Titre : </label>
 	<input type="text" id="addTitre" name="addTitre"/>
 	<label for="image"> Image : </label>
 	<input type="text" id="addImage" name="addImage"/>
-	<label for="dateSortie"> Date de sortie : </label>
-	<input type="text" id="addDateSortie" name="addDateSortie"/>
+	<label for="anneeSortie"> Année de sortie : </label>
+	<input type="text" id="addAnneeSortie" name="addAnneeSortie"/>
 	<label for="studio"> Studio : </label>
 	<input type="text" id="addStudio" name="addStudio"/>
 	<label for="description"> Description : </label>
@@ -111,7 +111,7 @@
 	<select id="updChamps" name="updChamps">
 		<option value="Titre">Titre</option>
 		<option value="Image">Image</option>
-		<option value="DateSortie">DateSortie</option>
+		<option value="AnneeSortie">AnneeSortie</option>
 		<option value="Studio">Studio</option>
 		<option value="Description">Description</option>
 	</select>
