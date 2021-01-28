@@ -58,7 +58,7 @@
                   	</div>
                   	<div class="col-md-7">
             			<h1 class="text-left">Déjà inscrit ?</h1>
-						<a href="/projet_sd/connexion">Connectez-vous !</a>
+						<a class="btn btn-success"href="/projet_sd/connexion">Connectez-vous !</a>
             		</div>	
                </div>
 
